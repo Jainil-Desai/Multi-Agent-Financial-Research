@@ -82,10 +82,10 @@ export default function PriceChart({ prices, forecast, ticker }) {
           <Legend wrapperStyle={{ fontSize: 12, color: '#94a3b8' }} />
 
           <Area dataKey="upper" fill={trendColor} fillOpacity={0.08} stroke="none" name="Upper bound" legendType="none" />
-          <Area dataKey="lower" fill="#0f1117" fillOpacity={1} stroke="none" name="Lower bound" legendType="none" />
+          <Area dataKey="lower" fill={trendColor} fillOpacity={0.08} stroke="none" name="Lower bound" legendType="none" />
 
           <Line dataKey="close" stroke="#818cf8" strokeWidth={2} dot={false} name="Close" connectNulls />
-          <Line dataKey="predicted" stroke={trendColor} strokeWidth={2} strokeDasharray="5 3" dot={false} name="Forecast" connectNulls />
+          <Line dataKey="predicted" stroke="#f59e0b" strokeWidth={2.5} strokeDasharray="6 3" dot={false} name="Forecast" connectNulls />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

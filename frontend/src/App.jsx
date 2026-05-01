@@ -108,7 +108,7 @@ export default function App() {
           <div className="text-center py-20 text-slate-600">
             <div className="text-5xl mb-4">🔍</div>
             <p className="text-lg">Enter a ticker above to run the full research pipeline</p>
-            <p className="text-sm mt-2">Takes ~30–90 seconds · Powered by GPT-4o-mini + Prophet + SEC EDGAR</p>
+            <p className="text-sm mt-2">Powered by GPT-4o-mini + Prophet + SEC EDGAR</p>
           </div>
         )}
       </main>

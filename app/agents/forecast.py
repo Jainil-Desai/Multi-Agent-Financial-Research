@@ -64,16 +64,26 @@ class ForecastAgent:
         except Exception as e:
             log.error(f"[ForecastAgent] Prophet failed: {e}")
             closes = [b["close"] for b in price_bars[-30:]]
+            last_date = pd.to_datetime(price_bars[-1]["date"])
             avg_daily = (closes[-1] - closes[0]) / len(closes)
-            predicted = round(closes[-1] + avg_daily * periods, 2)
-            pct = round((predicted - closes[-1]) / closes[-1] * 100, 2)
+            predicted_end = round(closes[-1] + avg_daily * periods, 2)
+            pct = round((predicted_end - closes[-1]) / closes[-1] * 100, 2)
+            predictions = [
+                {
+                    "date": (last_date + pd.Timedelta(days=i + 1)).strftime("%Y-%m-%d"),
+                    "predicted_close": round(closes[-1] + avg_daily * (i + 1), 2),
+                    "lower_bound": round(closes[-1] + avg_daily * (i + 1) * 0.97, 2),
+                    "upper_bound": round(closes[-1] + avg_daily * (i + 1) * 1.03, 2),
+                }
+                for i in range(periods)
+            ]
             result = {
                 "forecast_days": periods,
                 "last_actual_close": round(closes[-1], 2),
-                "predicted_close_end": predicted,
+                "predicted_close_end": predicted_end,
                 "predicted_pct_change": pct,
                 "trend": "bullish" if pct > 2 else "bearish" if pct < -2 else "neutral",
-                "predictions": [],
+                "predictions": predictions,
                 "note": "Linear fallback used (Prophet unavailable)",
             }
 

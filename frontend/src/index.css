@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  background: #0f1117;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Recharts tooltip dark theme */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #1e2130 !important;
+  border: 1px solid #2d3148 !important;
+  border-radius: 8px !important;
+}
+
+/* Markdown report styles */
+.report-content h2 { font-size: 1.1rem; font-weight: 600; color: #c084fc; margin: 1rem 0 0.4rem; }
+.report-content p  { color: #cbd5e1; line-height: 1.7; margin-bottom: 0.75rem; }
+.report-content ul { list-style: disc; padding-left: 1.25rem; color: #cbd5e1; }
+.report-content li { margin-bottom: 0.3rem; }
+.report-content strong { color: #e2e8f0; }
